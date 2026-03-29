@@ -26,22 +26,24 @@ class conway : public GridCell<prisonerState, double> {
             // For each neighbor, calculate points
 			auto nState = neighborData.state;
 
-			if(nState->c == true) {
+			if(nState->cooperate == true) {
 				live_neighbors++;
 			}
 
 		}
 
-		if(state.c == true) {
+		if(state.cooperate == true) {
 			live_neighbors--; //Self is a neighbor, we do not care about that yet.
 			if(live_neighbors < 2 || live_neighbors > 3) {
-				state.c = false;
+				state.cooperate = false;
 			}
 		} else {
 			if(live_neighbors == 3) {
-				state.c = true;
+				state.cooperate = true;
 			}
 		}
+
+        state.years_free++;
 
 		return state;
 	}

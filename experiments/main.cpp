@@ -13,7 +13,7 @@ std::shared_ptr<GridCell<prisonerState, double>> addGridCell(
     ) {
 	auto cellModel = cellConfig->cellModel;
 
-	if (cellModel == "conway") {
+	if (cellModel == "prisoners_dilemma") {
 		return std::make_shared<conway>(cellId, cellConfig);
 	} else {
 		throw std::bad_typeid();
@@ -29,7 +29,7 @@ int main(int argc, char ** argv) {
 	std::string configFilePath = argv[1];
 	double simTime = (argc > 2)? std::stod(argv[2]) : 500;
 
-	auto model = std::make_shared<GridCellDEVSCoupled<prisonerState, double>>("conway", addGridCell, configFilePath);
+	auto model = std::make_shared<GridCellDEVSCoupled<prisonerState, double>>("prisoners_dilemma", addGridCell, configFilePath);
 	model->buildModel();
 	
 	auto rootCoordinator = RootCoordinator(model);
