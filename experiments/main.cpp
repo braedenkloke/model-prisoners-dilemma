@@ -1,15 +1,16 @@
 #include <cadmium/modeling/celldevs/grid/coupled.hpp>
 #include <cadmium/simulation/logger/csv.hpp>
 #include <cadmium/simulation/root_coordinator.hpp>
-#include <chrono>
-#include <fstream>
-#include <string>
-#include "../include/conwayCell.hpp"
+
+#include "../include/prisoner_cell.hpp"
 
 using namespace cadmium::celldevs;
 using namespace cadmium;
 
-std::shared_ptr<GridCell<conwayState, double>> addGridCell(const coordinates & cellId, const std::shared_ptr<const GridCellConfig<conwayState, double>>& cellConfig) {
+std::shared_ptr<GridCell<prisonerState, double>> addGridCell(
+        const coordinates & cellId, 
+        const std::shared_ptr<const GridCellConfig<prisonerState, double>>& cellConfig
+    ) {
 	auto cellModel = cellConfig->cellModel;
 
 	if (cellModel == "conway") {
@@ -28,7 +29,7 @@ int main(int argc, char ** argv) {
 	std::string configFilePath = argv[1];
 	double simTime = (argc > 2)? std::stod(argv[2]) : 500;
 
-	auto model = std::make_shared<GridCellDEVSCoupled<conwayState, double>>("conway", addGridCell, configFilePath);
+	auto model = std::make_shared<GridCellDEVSCoupled<prisonerState, double>>("conway", addGridCell, configFilePath);
 	model->buildModel();
 	
 	auto rootCoordinator = RootCoordinator(model);
