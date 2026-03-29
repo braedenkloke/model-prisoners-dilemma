@@ -16,35 +16,24 @@ class conway : public GridCell<prisonerState, double> {
 
 	[[nodiscard]] prisonerState localComputation(
         prisonerState state,
-        const std::unordered_map<std::vector<int>, 
-        NeighborData<prisonerState, 
-        double>>& neighborhood
+        const std::unordered_map<std::vector<int>, NeighborData<prisonerState, double>>& neighborhood
     ) const override {
-		int live_neighbors = 0;
-
 		for (const auto& [neighborId, neighborData]: neighborhood) {
-            // For each neighbor, calculate points
 			auto nState = neighborData.state;
-
-			if(nState->cooperate == true) {
-				live_neighbors++;
-			}
-
+            if (state.cooperate == true && nState->cooperate == true) {
+                // Both prisoners cooperate; Reward payoff
+                state.years_free += 3;
+            } else if (state.cooperate == true && nState->cooperate == false) {
+                // Opponent defects; Sucker's payoff
+                state.years_free += 0;
+            } else if (state.cooperate == false && nState->cooperate == true) {
+                // Opponent cooperates; Temptation payoff
+                state.years_free += 5;
+            } else {
+                // Both prisoners defect; Punishment payoff
+                state.years_free += 1;
+            }
 		}
-
-		if(state.cooperate == true) {
-			live_neighbors--; //Self is a neighbor, we do not care about that yet.
-			if(live_neighbors < 2 || live_neighbors > 3) {
-				state.cooperate = false;
-			}
-		} else {
-			if(live_neighbors == 3) {
-				state.cooperate = true;
-			}
-		}
-
-        state.years_free++;
-
 		return state;
 	}
 

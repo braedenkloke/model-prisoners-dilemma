@@ -20,13 +20,12 @@ std::ostream& operator<<(std::ostream& os, const prisonerState& x) {
 
 // The simulator must be able to compare the equality of two state objects
 bool operator!=(const prisonerState& x, const prisonerState& y) {
-	return x.cooperate != y.cooperate;
+	return x.years_free != y.years_free;
 }
 
 // It parses a JSON file and generates the corresponding prisonerState object.
 void from_json(const nlohmann::json& j, prisonerState& s) {
 	j.at("cooperate").get_to(s.cooperate);
-	j.at("years_free").get_to(s.years_free);
 }
 
 #endif // PRISONER_STATE_HPP
