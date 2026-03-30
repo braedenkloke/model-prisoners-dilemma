@@ -6,22 +6,22 @@
 
 struct prisonerState {
 	bool cooperate; // True if prisoner cooperates, false if prisoner defects.
-    int years_free;
+    int total_payoff;
     int r, s, t, p; // Payoff matrix
 
 	// Default constructor function.
-	prisonerState() : cooperate(false), years_free(0), r(3), s(0), t(5), p(1) {}
+	prisonerState() : cooperate(false), total_payoff(0), r(3), s(0), t(5), p(1) {}
 };
 
 // Prints the prisoner's state in an output stream.
 std::ostream& operator<<(std::ostream& os, const prisonerState& x) {
-	os << "<" << ((x.cooperate)? 1 : 0) << "," << x.years_free << ">";
+	os << "<" << ((x.cooperate)? 1 : 0) << "," << x.total_payoff << ">";
 	return os;
 }
 
 // The simulator must be able to compare the equality of two state objects
 bool operator!=(const prisonerState& x, const prisonerState& y) {
-	return x.years_free != y.years_free;
+	return x.total_payoff != y.total_payoff;
 }
 
 // It parses a JSON file and generates the corresponding prisonerState object.
