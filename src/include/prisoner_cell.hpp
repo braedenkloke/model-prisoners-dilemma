@@ -21,17 +21,13 @@ class conway : public GridCell<prisonerState, double> {
 		for (const auto& [neighborId, neighborData]: neighborhood) {
 			auto nState = neighborData.state;
             if (state.cooperate == true && nState->cooperate == true) {
-                // Both prisoners cooperate; Reward payoff
-                state.years_free += 3;
+                state.years_free += state.r; // Reward
             } else if (state.cooperate == true && nState->cooperate == false) {
-                // Opponent defects; Sucker's payoff
-                state.years_free += 0;
+                state.years_free += state.s; // Sucker's payoff
             } else if (state.cooperate == false && nState->cooperate == true) {
-                // Opponent cooperates; Temptation payoff
-                state.years_free += 5;
+                state.years_free += state.t; // Temptation payoff
             } else {
-                // Both prisoners defect; Punishment payoff
-                state.years_free += 1;
+                state.years_free += state.p; // Punishment
             }
 		}
 		return state;

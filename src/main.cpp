@@ -2,7 +2,7 @@
 #include <cadmium/simulation/logger/csv.hpp>
 #include <cadmium/simulation/root_coordinator.hpp>
 
-#include "../include/prisoner_cell.hpp"
+#include "include/prisoner_cell.hpp"
 
 using namespace cadmium::celldevs;
 using namespace cadmium;

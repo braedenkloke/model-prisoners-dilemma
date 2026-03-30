@@ -7,9 +7,10 @@
 struct prisonerState {
 	bool cooperate; // True if prisoner cooperates, false if prisoner defects.
     int years_free;
+    int r, s, t, p; // Payoff matrix
 
 	// Default constructor function.
-	prisonerState() : cooperate(false), years_free(0) {}
+	prisonerState() : cooperate(false), years_free(0), r(3), s(0), t(5), p(1) {}
 };
 
 // Prints the prisoner's state in an output stream.
