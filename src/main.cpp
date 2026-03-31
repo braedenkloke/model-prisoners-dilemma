@@ -23,11 +23,11 @@ std::shared_ptr<GridCell<playerState, double>> addGridCell(
 int main(int argc, char ** argv) {
 	if (argc < 2) {
 		std::cout << "Program used with wrong parameters. The program must be invoked as follows:";
-		std::cout << argv[0] << " SCENARIO_CONFIG.json [MAX_SIMULATION_TIME (default: 500)]" << std::endl;
+		std::cout << argv[0] << " SCENARIO_CONFIG.json [MAX_SIMULATION_TIME (default: 200)]" << std::endl;
 		return -1;
 	}
 	std::string configFilePath = argv[1];
-	double simTime = (argc > 2)? std::stod(argv[2]) : 500;
+	double simTime = (argc > 2)? std::stod(argv[2]) : 200;
 
 	auto model = std::make_shared<GridCellDEVSCoupled<playerState, double>>("prisoners_dilemma", addGridCell, configFilePath);
 	model->buildModel();

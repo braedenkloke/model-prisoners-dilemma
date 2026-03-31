@@ -1,31 +1,31 @@
-# Spatialized Prisoner's Dilemma Model and Simulation
-
-Inspired by this ...
+# Spatialized Prisoner's Dilemma
+Model and simulation of the Prisoner's Dilemma as cellular automata in a grid cell space. Implemented with Cell-DEVS and Cadmium.
 
 ## Usage
-To build all experiments and tests, run
+To build the model, run
 ```
 source build.sh
 ```
 
-Execute any of the experiments and tests in the `bin` folder, for example
+To execute an experiment or test, run
 ```
-./bin/wastewater_system_combined_attacks
+./bin/prisoners_dilemma config/<config_file>
 ```
 
-Visualize using Cell-DEVS viewer
-...
+Output is logged to
+```
+grid_log.csv
+```
 
+To visualize the output, upload the files `<config_file>` and `grid_log.csv` to the [DEVS Web Viewer](https://devssim.carleton.ca/cell-devs-viewer/).
 
 ## Requirements
-
 * [Cadmium v2](https://github.com/Sasisekhar/cadmium_v2) 
 
-
 ## Further Reading
+- [The Philosophical Computer: Exploratory Essays in Philosophical Computer Modeling](https://direct.mit.edu/books/monograph/5400/The-Philosophical-ComputerExploratory-Essays-in)
+- [The Evolution of Cooperation](https://en.wikipedia.org/wiki/The_Evolution_of_Cooperation)
 - [Cadmium and the DEVSsim Server](https://devssim.carleton.ca/): Two tools for discrete-event modeling and simulation.
-- [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
-- [hackergrrl/art-of-readme](https://github.com/hackergrrl/art-of-readme)
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
