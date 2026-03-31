@@ -19,6 +19,8 @@ grid_log.csv
 
 To visualize the output, upload the files `<config_file>` and `grid_log.csv` to the [DEVS Web Viewer](https://devssim.carleton.ca/cell-devs-viewer/).
 
+For a detailed description of the project, see the [report](Report.pdf).
+
 ## Requirements
 * [Cadmium v2](https://github.com/Sasisekhar/cadmium_v2) 
 
